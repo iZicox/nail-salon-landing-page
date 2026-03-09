@@ -1,0 +1,81 @@
+---
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  itemsSi: string[];
+  itemsNo: string[];
+  ctaTexto: string;
+  ctaHref: string;
+  imagenSrc?: string;
+}
+
+const { titulo, descripcion, itemsSi, itemsNo, ctaTexto, ctaHref, imagenSrc } = Astro.props;
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]"></div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#C4964A]/10 text-[#C4964A] rounded-full text-sm font-medium mb-6 border border-[#C4964A]/20">
+        {titulo}
+      </span>
+      {descripcion && (
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight" set:html={descripcion} />
+      )}
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="p-8 lg:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl" data-aos="fade-up">
+        <div class="w-12 h-12 rounded-full bg-[#B5726A]/20 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-[#B5726A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        
+        <h3 class="text-2xl text-white mb-6">
+          Para quién SÍ
+        </h3>
+        
+        <ul class="space-y-4">
+          {itemsSi.map((item) => (
+            <li class="flex items-start gap-3 text-gray-300">
+              <span class="text-[#B5726A] mt-0.5">✓</span>
+              <span class="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="p-8 lg:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+        
+        <h3 class="text-2xl text-white mb-6">
+          Para quién NO
+        </h3>
+        
+        <ul class="space-y-4">
+          {itemsNo.map((item) => (
+            <li class="flex items-start gap-3 text-gray-500">
+              <span class="text-gray-600 mt-0.5">✗</span>
+              <span class="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12" data-aos="fade-up">
+      <a 
+        href={ctaHref}
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-bold transition transform bg-[#C4964A] hover:bg-[#b38a42] text-white rounded-full hover:scale-105 shadow-lg shadow-[#C4964A]/25"
+      >
+        {ctaTexto}
+      </a>
+    </div>
+  </div>
+</section>

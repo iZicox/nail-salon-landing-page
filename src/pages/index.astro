@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../components/sections/Hero.astro'
+import QuienSoy from '../components/sections/QuienSoy.astro'
+import ParaQuien from '../components/sections/ParaQuien.astro'
+import Caracteristicas from '../components/sections/Caracteristicas.astro'
+import Preguntas from '../components/sections/Preguntas.astro'
+import Testimonios from '../components/sections/Testimonios.astro'
+import Precio from '../components/sections/Precio.astro'
+import Cierre from '../components/sections/Cierre.astro'
+
+const WHATSAPP_URL = "https://wa.me/1234567890"
+---
+
+<BaseLayout title="Uñas Semipermanentes Premium">
+  <Hero
+    eyebrow="✨ Solo 5 cupos disponibles esta semana"
+    titulo="Uñas perfectas que duran hasta 3 semanas"
+    descripcion="Sin dañar tu uña natural. El semipermanente es la solución que las mujeres ocupadas estaban esperando. Sin retoques cada semana, sin descascarados al segundo día. Solo color vibrante y manos que hablan por ti."
+    ctaTexto="Quiero reservar mi lugar"
+    ctaHref={WHATSAPP_URL}
+    stats={[
+      { icono: "⭐", texto: "+43 clientas" },
+      { icono: "✓", texto: "+31 tonos" }
+    ]}
+    imagenSrc="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&h=1000&fit=crop"
+  />
+
+  <ParaQuien
+    titulo="¿Para quién es?"
+    descripcion='Te cuento<br /><span class="text-gray-500">Te cuento</span>'
+    itemsSi={[
+      "Mujeres que buscan uñas impecables por semanas",
+      "Clientas que valoran la calidad y durabilidad",
+      "Personas con poco tiempo para mantenimiento",
+      "Quieren diseños personalizados y únicos"
+    ]}
+    itemsNo={[
+      "Busca soluciones temporales de un día",
+      "Tiene uñas muy débiles que necesitan tratamiento",
+      "Prefiere cambios frecuentes de color",
+      "No puede comprometerse al cuidado post-tratamiento"
+    ]}
+    ctaTexto="Quiero reservar"
+    ctaHref={WHATSAPP_URL}
+  />
+
+  <Caracteristicas
+    eyebrow="Características"
+    titulo="Por qué<br />elegirnos"
+    caracteristicas={[
+      { titulo: "Técnica Premium", descripcion: "Productos de primera línea y técnicas avanzadas para un acabado impecable que dura hasta 4 semanas.", icono: "💅" },
+      { titulo: "Diseño Personalizado", descripcion: "Más de 80 tonos disponibles. Desde looks nude naturales hasta diseños artísticos completamente personalizados.", icono: "🎨" },
+      { titulo: "Brillo Duradero", descripcion: "Nuestro sellado especial garantiza que el brillo se mantenga intacto durante toda la vida útil de la manicura.", icono: "✨" },
+      { titulo: "Productos Seguros", descripcion: "Todos nuestros productos son libres de dañinos y están dermatológicamente probados para cuidar tus uñas.", icono: "🌿" },
+      { titulo: "Servicio Rápido", descripcion: "En solo 60-90 minutos tienes unas uñas perfectas. Sin compromisos, sin esperas.", icono: "⏱️" },
+      { titulo: "Experiencia Luxury", descripcion: "Ambiente relajante, productos premium y atención personalizada en cada visita.", icono: "💎" }
+    ]}
+    imagenSrc="https://images.unsplash.com/photo-1632345031635-ee7c8e9d5c1b?w=800&h=500&fit=crop"
+    ctaTexto="Ver diseños"
+    ctaHref={WHATSAPP_URL}
+  />
+
+  <Preguntas
+    eyebrow="FAQ"
+    titulo="Preguntas<br /><span class='text-gray-500'>frecuentes</span>"
+    preguntas={[
+      { pregunta: "¿Cuánto dura el semipermanente?", respuesta: "El semipermanente dura entre 3-4 semanas dependiendo del cuidado y el crecimiento de tu uña natural. Recomendamos retoques cada 4 semanas." },
+      { pregunta: "¿Daña las uñas naturales?", respuesta: "No, cuando se aplica correctamente y se remueve con técnica adecuada. Usamos productos premium y técnicas suaves para proteger tus uñas." },
+      { pregunta: "¿Cuánto tiempo dura la aplicación?", respuesta: "La aplicación completa toma entre 60-90 minutos. Incluye manicura, aplicación del producto, diseño y curado." },
+      { pregunta: "¿Puedo nadar o hacer actividades con agua?", respuesta: "Sí, puedes hacer vida normal desde el primer día. Es resistente al agua y no se despega con la humedad." },
+      { pregunta: "¿Cómo cuidarlo en casa?", respuesta: "Simplemente evita usar las uñas como herramientas, aplica aceite de cutícula regularmente y usa guantes al limpiar." }
+    ]}
+    imagenSrc="https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?w=500&h=700&fit=crop"
+    ctaTexto="Tengo otra pregunta"
+    ctaHref={WHATSAPP_URL}
+  />
+
+  <Testimonios
+    eyebrow="Testimonios"
+    titulo="Lo que dicen<br /><span class='text-gray-500'>nuestras clientas</span>"
+    subtitulo="Más de 500 mujeres ya confían en nosotros"
+    testimonios={[
+      { texto: "Nunca había tenido mis uñas tan perfectas por tanto tiempo. El diseño duró 4 semanas sin nada. Totalmente recomendada.", nombre: "María González" },
+      { texto: "El ambiente del salón es increíblemente relajante. Me encantó la atención personalizada. Volveré sin dudas.", nombre: "Sofía Martínez" },
+      { texto: "Llevo 2 años viniendo y no puedo cambiar. La calidad es impecable y siempre me sorprenden con diseños nuevos.", nombre: "Carolina López" }
+    ]}
+    ctaTexto="Reservar turno"
+    ctaHref={WHATSAPP_URL}
+  />
+
+  <Precio
+    titulo="Paquete Completo"
+    subtitulo="Precio"
+    incluye={[
+      "Manicura completa profesional",
+      "Aplicación de semipermanente",
+      "Diseño de tu elección",
+      "Sellado y brillo de larga duración",
+      "Hidratación de manos y cutículas",
+      "Consulta personalizada de colores"
+    ]}
+    precio="$65"
+    precioAnterior="$85"
+    escasez="Solo quedan 3 cupos disponibles esta semana"
+    ctaTexto="Reservar ahora"
+    ctaHref={WHATSAPP_URL}
+    imagenSrc="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=800&fit=crop"
+  />
+
+  <QuienSoy
+    nombre="Francis"
+    biografia={[
+      ", manicurista profesional con más de 3 años de experiencia en semipermanente de alta gama.",
+      "Mi pasión por el nail art nació de querer ofrecer a las mujeres un servicio que va más allá de una simple manicura. Creo que unas uñas perfectas son una forma de expresión personal y confianza.",
+      "Cada clienta es única, por eso me dedico a entender tu estilo y crear diseños que se adapten a tu personalidad. Uso solo productos premium para garantizar resultados que duran semanas, no días."
+    ]}
+    imagenSrc="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=800&fit=crop"
+    stats={[
+      { valor: "MG", label: "+500 clientas satisfechas" }
+    ]}
+    ctaTexto="Conoceme más"
+    ctaHref={WHATSAPP_URL}
+  />
+
+  <Cierre
+    eyebrow="Transforma tus manos"
+    titulo="Reserva tu<br />cita hoy"
+    descripcion="Tu momento de relax te espera. Descubre por qué más de 500 mujeres confían en nosotros."
+    ctaTexto="Reservar mi cita"
+    ctaHref={WHATSAPP_URL}
+    imagenSrc="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1920&h=1080&fit=crop"
+  />
+</BaseLayout>

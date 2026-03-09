@@ -1,0 +1,76 @@
+---
+interface Props {
+  eyebrow?: string;
+  titulo: string;
+  subtitulo?: string;
+  caracteristicas: { titulo: string; descripcion: string; icono: string }[];
+  imagenSrc?: string;
+  ctaTexto?: string;
+  ctaHref?: string;
+}
+
+const { eyebrow, titulo, subtitulo, caracteristicas, imagenSrc, ctaTexto, ctaHref } = Astro.props;
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]"></div>
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#C4964A] rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-start mb-16" data-aos="fade-up">
+      <div>
+        {eyebrow && (
+          <span class="inline-block px-4 py-1.5 bg-[#C4964A]/10 text-[#C4964A] rounded-full text-sm font-medium mb-6 border border-[#C4964A]/20">
+            {eyebrow}
+          </span>
+        )}
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight" set:html={titulo} />
+      </div>
+      <!--
+      {imagenSrc && (
+        <div class="hidden lg:block" data-aos="fade-up" data-aos-delay="100">
+          <img 
+            src={imagenSrc} 
+            alt="" 
+            class="w-full h-64 object-cover rounded-2xl border border-white/10"
+          />
+        </div>
+      )} -->
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {caracteristicas.map((item, index) => (
+        <div 
+          class="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-colors"
+          data-aos="fade-up" 
+          data-aos-delay={index * 50}
+        >
+          <div class="w-12 h-12 rounded-full bg-[#C4964A]/20 flex items-center justify-center mb-5 text-xl">
+            {item.icono}
+          </div>
+          
+          <h3 class="text-xl text-white mb-3">
+            {item.titulo}
+          </h3>
+          
+          <p class="text-gray-400 leading-relaxed">
+            {item.descripcion}
+          </p>
+        </div>
+      ))}
+    </div>
+    
+    {ctaTexto && ctaHref && (
+      <div class="text-center mt-12" data-aos="fade-up">
+        <a 
+          href={ctaHref}
+          class="inline-flex items-center justify-center px-8 py-4 text-base font-bold transition transform border-2 border-[#C4964A] text-[#C4964A] hover:bg-[#C4964A] hover:text-white rounded-full"
+        >
+          {ctaTexto}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

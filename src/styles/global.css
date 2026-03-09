@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nude: #E8D5C4;
+  --color-blush: #C9A08A;
+  --color-deep: #1A1A1A;
+  --color-rose: #B5726A;
+  --color-cream: #FAFAFA;
+  --color-gold: #C4964A;
+  --color-muted: #7A6058;
+  --color-charcoal: #2D2D2D;
+  
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+}

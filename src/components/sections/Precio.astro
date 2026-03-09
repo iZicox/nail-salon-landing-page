@@ -1,0 +1,77 @@
+---
+interface Props {
+  titulo: string;
+  subtitulo?: string;
+  incluye: string[];
+  precio: string;
+  precioAnterior?: string;
+  escasez?: string;
+  ctaTexto: string;
+  ctaHref: string;
+  imagenSrc?: string;
+}
+
+const { titulo, subtitulo, incluye, precio, precioAnterior, escasez, ctaTexto, ctaHref, imagenSrc } = Astro.props;
+---
+
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]"></div>
+  
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {imagenSrc && (
+        <div data-aos="fade-up">
+          <img 
+            src={imagenSrc} 
+            alt="" 
+            class="w-full h-auto rounded-2xl border border-white/10"
+          />
+        </div>
+      )}
+      
+      <div data-aos="fade-up" data-aos-delay="100">
+        <span class="inline-block px-4 py-1.5 bg-[#C4964A]/10 text-[#C4964A] rounded-full text-sm font-medium mb-4 border border-[#C4964A]/20">
+          {subtitulo}
+        </span>
+        <h2 class="text-4xl sm:text-5xl text-white leading-tight">
+          {titulo}
+        </h2>
+        
+        <div class="mt-8 space-y-4">
+          {incluye.map((item) => (
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-[#B5726A] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-300">{item}</span>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-10 pt-8 border-t border-white/10">
+          <div class="flex items-baseline gap-2">
+            {precioAnterior && (
+              <span class="text-gray-500 line-through">{precioAnterior}</span>
+            )}
+            <span class="text-5xl text-white">{precio}</span>
+          </div>
+          
+          <div class="mt-6">
+            <a 
+              href={ctaHref}
+              class="inline-flex items-center justify-center px-8 py-4 text-base font-bold transition transform bg-[#C4964A] hover:bg-[#b38a42] text-white rounded-full hover:scale-105 shadow-lg shadow-[#C4964A]/25"
+            >
+              {ctaTexto}
+            </a>
+          </div>
+          
+          {escasez && (
+            <p class="mt-4 text-sm text-gray-500">
+              {escasez}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
