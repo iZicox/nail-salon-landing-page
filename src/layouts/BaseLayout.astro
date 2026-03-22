@@ -24,10 +24,10 @@ const { title, description = "Uñas semipermanentes premium. Transforma tu look 
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-white/5">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-          <a href="#" class="text-white font-bold text-lg">Francis Mangano<span class="text-[#C4964A]">.</span></a>
+          <a href="#" class="text-white font-bold text-lg">Francis Mangano<span class="text-gold">.</span></a>
           <a 
             href="https://wa.me/1234567890"
-            class="px-5 py-2.5 bg-[#C4964A] hover:bg-[#b38a42] text-white text-sm font-semibold rounded-full transition transform hover:scale-105"
+            class="px-5 py-2.5 bg-gold hover:bg-[#b38a42] text-white text-sm font-semibold rounded-full transition transform hover:scale-105"
           >
             Reservar cita
           </a>
@@ -55,6 +55,34 @@ const { title, description = "Uñas semipermanentes premium. Transforma tu look 
 
         document.querySelectorAll('[data-aos="fade-up"]').forEach((el) => {
           observer.observe(el);
+        });
+      });
+
+      // @ts-ignore
+      var fbq: any;
+
+      async function sendCAPIEvent(eventName: string, customData: Record<string, unknown> = {}) {
+        try {
+          await fetch('/api/capi', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventName,
+              eventTime: Math.floor(Date.now() / 1000),
+              eventSourceUrl: window.location.href,
+              customData
+            })
+          });
+        } catch (e) {
+          console.error('CAPI error:', e);
+        }
+      }
+
+      document.querySelectorAll('a[href*="wa.me"], a[href="#reservar"], a[href$="/#contacto"]').forEach(link => {
+        link.addEventListener('click', () => {
+          sendCAPIEvent('Lead', { button_location: 'header' });
+          // @ts-ignore
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead');
         });
       });
     </script>
